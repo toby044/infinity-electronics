@@ -1,9 +1,8 @@
 import type { Product } from "~/types/product";
 
-const { upstreamApiUrl } = useRuntimeConfig();
-
 export default defineCachedEventHandler(
   async (event): Promise<Product[]> => {
+    const { upstreamApiUrl } = useRuntimeConfig();
     const query = getQuery(event);
     const raw = Number(query.limit ?? 4);
     const limit = Number.isFinite(raw)

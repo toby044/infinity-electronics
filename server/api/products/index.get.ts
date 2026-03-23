@@ -1,9 +1,8 @@
 import type { Product } from "~/types/product";
 
-const { upstreamApiUrl } = useRuntimeConfig();
-
 export default defineCachedEventHandler(
   async (): Promise<Product[]> => {
+    const { upstreamApiUrl } = useRuntimeConfig();
     return $fetch<Product[]>(`${upstreamApiUrl}/products`);
   },
   {

@@ -1,9 +1,8 @@
 import type { Product } from "~/types/product";
 
-const { upstreamApiUrl } = useRuntimeConfig();
-
 export default defineCachedEventHandler(
   async (event): Promise<Product> => {
+    const { upstreamApiUrl } = useRuntimeConfig();
     const raw = getRouterParam(event, "id");
     const id = Number(raw);
 
